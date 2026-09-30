@@ -1,22 +1,25 @@
 from sklearn.datasets import load_wine
 from sklearn.model_selection import train_test_split
+import numpy as np
 
 
 def load_data():
-    # Load the Wine dataset
+    """Load and validate the Wine dataset and create a stratified split."""
+
     wine = load_wine()
 
     X = wine.data
     y = wine.target
 
-    # Check that the dataset has exactly 13 features
-    assert X.shape[1] == 13
+    # Validate feature count
+    if X.shape[1] != 13:
+        raise ValueError("Wine dataset must contain exactly 13 features.")
 
-    # Check that there are no missing values
-    assert not (X != X).any()
+    # Validate missing values
+    if np.isnan(X).any():
+        raise ValueError("Dataset contains missing values.")
 
-    # Split data into 80% training and 20% testing
-    # Stratify keeps the class distribution balanced
+    # Create stratified 80/20 train-test split
     X_train, X_test, y_train, y_test = train_test_split(
         X,
         y,
