@@ -1,1 +1,1 @@
-The project uses MLflow to track six trained classifier configurations,
+The project uses MLflow to track six candidate classifier configurations,
