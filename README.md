@@ -1,1 +1,1 @@
-The project uses MLflow to track six production-ready classifier configurations,
+The project uses MLflow to track six classifier configurations for reproducible experimentation and model tracking.
